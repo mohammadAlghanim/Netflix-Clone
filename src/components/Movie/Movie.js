@@ -25,7 +25,7 @@ return(
                 <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500/${props.m.poster_path}`} />
                 <Card.Body>
                     <Card.Title>{props.m.title}</Card.Title>
-                    <Card.Text>
+                    <Card.Text>{props.m.overview}
 
                     </Card.Text>
                     <Button variant="primary" onClick={handleShow}>Save Movie</Button>

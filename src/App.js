@@ -9,8 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <div className="App">
-      <Header/>
       <BrowserRouter>
+      <Header/>
       <main>
       <Routes>
         <Route path='/' element={<Home/>}/>
