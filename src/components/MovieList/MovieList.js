@@ -7,7 +7,7 @@ function MovieList(props) {
             <Row xs={1} md={4} className="g-4">
         {props.movie.map((el)=>{
             return(
-                <Movie m={el} />
+                <Movie m={el} key={el.id} />
             )
 
         })}
