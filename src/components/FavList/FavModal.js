@@ -5,13 +5,14 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
 
-function ModalMovie(props) {
+function FAvModal(props) {
     const [comment, setComment] = useState('');
     const handleCommentChange = (event) => {
         setComment(event.target.value);
     }
     
-    function handleSave() {
+    
+    const handleSave = async ()=> {
         
         const movie = {
             title: props.clicked.title,
@@ -21,14 +22,16 @@ function ModalMovie(props) {
             comment: comment,
         }
         const requestOptions = {
-            method: 'POST',
+            method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(movie)
         };
-        fetch('https://movies-library-lyart.vercel.app/getMovie', requestOptions)
-            .then(response => response.json())
+        const response = await fetch(`https://movies-library-lyart.vercel.app/updateMovie/${props.clicked.id}`, requestOptions)
+        const data = await response.json();
+        props.setNewArr(data);
             
             props.handleClose();
+
             
     }
 
@@ -41,10 +44,10 @@ function ModalMovie(props) {
                 <Modal.Title>{props.clicked.title}</Modal.Title>
             </Modal.Header>
             <Modal.Body> <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500/${props.clicked.poster_path}`} />
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                <Form.Group  className="mb-3" controlId="exampleForm.ControlTextarea1">
                     
-                    <Form.Label>add your opinion</Form.Label>
-                    <Form.Control as="textarea" rows={3}  onChange={handleCommentChange} />
+                    <Form.Label>update your opinion</Form.Label>
+                    <Form.Control as="textarea" defaultValue={props.clicked.comment} rows={3}  onChange={handleCommentChange} />
                 </Form.Group>
             </Modal.Body>
             <Modal.Footer>
@@ -52,10 +55,10 @@ function ModalMovie(props) {
                     Close
                 </Button>
                 <Button variant="primary" onClick={handleSave} >
-                    Save Changes
+                    update Changes
                 </Button>
             </Modal.Footer>
         </Modal>
     )
 }
-export default ModalMovie;
+export default FAvModal;
