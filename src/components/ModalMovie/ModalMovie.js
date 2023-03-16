@@ -25,7 +25,7 @@ function ModalMovie(props) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(movie)
         };
-        fetch('https://movies-library-lyart.vercel.app/getMovie', requestOptions)
+        fetch(`${process.env.REACT_APP_serverURL}getMovie`, requestOptions)
             .then(response => response.json())
             
             props.handleClose();

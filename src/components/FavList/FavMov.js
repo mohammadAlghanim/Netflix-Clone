@@ -27,7 +27,7 @@ function FavMov(props){
             method: 'DELETE',
             
         };
-        const response = await fetch(`https://movies-library-lyart.vercel.app/deleteMovie/${props.f.id}`, requestOptions)
+        const response = await fetch(`${process.env.REACT_APP_serverURL}deleteMovie/${props.f.id}`, requestOptions)
         const data = await response.json();
         props.setDelArr(data);
             

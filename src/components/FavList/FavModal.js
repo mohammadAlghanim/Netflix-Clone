@@ -26,7 +26,7 @@ function FAvModal(props) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(movie)
         };
-        const response = await fetch(`https://movies-library-lyart.vercel.app/updateMovie/${props.clicked.id}`, requestOptions)
+        const response = await fetch(`${process.env.REACT_APP_serverURL}updateMovie/${props.clicked.id}`, requestOptions)
         const data = await response.json();
         props.setNewArr(data);
             

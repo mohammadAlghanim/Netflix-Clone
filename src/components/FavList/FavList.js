@@ -4,7 +4,7 @@ import MovFavList from "./MovFavList";
 function FavList(){
     const [movArr, setMovArr] = useState([]);
     const sendReq = async () => {
-      const serverURL = `https://movies-library-lyart.vercel.app/getMovie`;
+      const serverURL = `${process.env.REACT_APP_serverURL}getMovie`;
       const response = await fetch(serverURL);
       const data = await response.json();
       setMovArr(data);

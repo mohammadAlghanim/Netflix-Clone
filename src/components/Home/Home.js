@@ -4,7 +4,7 @@ import MovieList from "../MovieList/MovieList";
 function Home() {
   const [movArr, setMovArr] = useState([]);
   const sendReq = async () => {
-    const serverURL = `https://movies-library-lyart.vercel.app/trending`;
+    const serverURL = `${process.env.REACT_APP_serverURL}trending`;
     const response = await fetch(serverURL);
     const data = await response.json();
     setMovArr(data);
