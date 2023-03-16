@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MovFavList from "./MovFavList";
-
+// import card from ''
 function FavList(){
     const [movArr, setMovArr] = useState([]);
     const sendReq = async () => {
@@ -9,6 +9,7 @@ function FavList(){
       const data = await response.json();
       setMovArr(data);
     };
+
 
     const setNewArr =(Arr)=>{
         setMovArr(Arr);
